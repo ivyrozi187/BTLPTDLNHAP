@@ -304,8 +304,9 @@ def inject_pastel_theme():
             color: {TEXT_COLOR};
         }}
 
-        /* --- CANH GIỮA NỘI DUNG CHÍNH (THÊM CSS CHO CENTERED CONTAINER) --- */
-        .main [data-testid="stVerticalBlock"] {{
+        /* --- CANH GIỮA NỘI DUNG CHÍNH (SỬA ĐỔI ĐỂ CĂN GIỮA) --- */
+        /* Sử dụng selector phổ quát hơn để nhắm mục tiêu vào nội dung chính */
+        .main > div {{
             max-width: 1200px; 
             margin: 0 auto; 
         }}
