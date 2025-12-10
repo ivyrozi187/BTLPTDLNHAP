@@ -280,7 +280,8 @@ def find_profile_recommendations(username, df_movies):
     else:
         st.warning("Đã hết phim để đề xuất hoặc chưa đủ dữ liệu.")
     
-    st.rerun()
+
+
 
 # ------------------------------------------------------------------------------
 # UI: CÁC HÀM VẼ GIAO DIỆN VÀ CSS (PASTEL THEME)
@@ -843,7 +844,7 @@ def register_user(username, selected_topics):
     st.session_state['recommended_movie_ids'].update(set(initial_recommendations['movie_id']))
     
     st.success(f"Đăng ký thành công! Chào mừng {username}. Đang tạo đề xuất ban đầu...")
-    st.rerun()
+  
 
 def authentication_page(df_movies, cosine_sim):
     inject_pastel_theme()
@@ -866,7 +867,7 @@ def authentication_page(df_movies, cosine_sim):
                 # Reset lịch sử đề xuất khi đăng nhập user mới
                 st.session_state['recommended_movie_ids'] = set() 
                 st.success(f"Chào mừng trở lại, {login_username}!")
-                st.rerun()
+             
             else:
                 st.error("Tên người dùng không tồn tại. Vui lòng thử lại hoặc đăng ký.")
 
@@ -955,7 +956,7 @@ def main_page(df_movies, cosine_sim):
         if user_row.empty:
             st.error("Lỗi: Không tìm thấy hồ sơ người dùng. Vui lòng đăng nhập lại.")
             st.session_state['logged_in_user'] = None
-            st.rerun()
+           
             return
         
         menu_choice = st.sidebar.radio(
@@ -988,7 +989,7 @@ def main_page(df_movies, cosine_sim):
                     st.session_state['show_sim_plot'] = True
                 else:
                     st.warning("Không tìm thấy đề xuất cho phim này.")
-                st.rerun()
+                
 
             if not st.session_state['last_sim_result'].empty:
                 display_movie_cards(st.session_state['last_sim_result'], 'weighted_score', f"cho '{st.session_state['last_sim_movie']}'")
@@ -1084,3 +1085,4 @@ if __name__ == '__main__':
         main_page(df_movies, cosine_sim)
     else:
         authentication_page(df_movies, cosine_sim)
+
